@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bút King</title>
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville&family=Playfair+Display:ital@0;1&display=swap"
+          rel="stylesheet">
+    <style>
+        body {
+            --primary-color: #f5f5c4;
+            --secondary-color: #A52A2A;
+            font-family: "Playfair Display", Montserrat, sans-serif;
+        }
+        header {
+            background: var(--primary-color);
+        }
+        .top-header {
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 120px;
+            padding-left: 20px;
+            padding-right: 20px;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        #logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-100px);
+            height: auto;
+            width: 100px;
+        }
+        .function-nav a {
+            color: var(--secondary-color);
+        }
+        .function-nav {
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .function-item {
+            margin-right: 1rem;
+        }
+        .bottom-header {
+            background: var(--primary-color) !important;
+        }
+        .navbar-expand-lg .navbar-nav .nav-link {
+            padding-right: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--secondary-color);
+        }
+        .filter {
+            height: 60px;
+        }
+        a {
+            text-decoration: none;
+        }
+        @media screen and (min-width: 1200px) {
+            .col-lg-five {
+                flex: 0 0 20%;
+                max-width: 20%;
+            }
+        }
+        .card.card-product-grid {
+            box-shadow: 0 1px 2px rgba(51 51 51 / 7%);
+        }
+        .card.card-product-grid .img-wrap {
+            border-radius: 0.25rem 0.25rem 0 0;
+        }
+        .card-product-grid .img-wrap {
+            height: 200px;
+        }
+        [class*=card-product-grid] .img-wrap {
+            position: relative;
+        }
+        .img-wrap {
+            text-align: center;
+            overflow: hidden;
+            display: block;
+        }
+        [class*=card-product-grid] .img-wrap img {
+            height: 100%;
+            max-width: 100%;
+            width: auto;
+        }
+        .mix-blend-mode {
+            mix-blend-mode: multiply;
+        }
+        .bg-gray-light {
+            background-color: #e9ecef;
+        }
+        .card-product-grid .card-product-info {
+            padding: 0.25rem 0.50rem;
+            overflow: hidden;
+        }
+        .card-product-grid .title {
+            color: #6a6f74;
+            height: 2.6rem;
+            font-weight: 600;
+            font-size: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 0.15rem;
+        }
+        [class*=card-product-grid] .price {
+            color: #383d43;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .card-product-grid .topbar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            z-index: 10;
+            text-align: right;
+            padding: 1px 6px;
+        }
+        .card-product-grid .topbar .tag-discount {
+            background-color: #e13454;
+            border-radius: 0.25rem;
+            padding: 0.32rem 0.7rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="top-header">
+        <div class="row">
+            <div class="function-nav d-flex flex-row justify-content-end ">
+                <a class="function-item" href="#">Đăng kí</a>
+                <a class="function-item" href="#">Đăng nhập</a>
+                <a href="#"><i class='function-item bx bx-search-alt-2 bx-sm'></i></a>
+                <a href="#"><i class='function-item bx bx-cart bx-sm'></i></a>
+            </div>
+        </div>
+        <div id="logo">
+            <img class="py-2" src="./logo.png" width="200px" alt="logo">
+        </div>
+    </div>
+    <div class="bottom-header d-flex align-self-end justify-content-center">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" style="color: var(--secondary-color);" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Danh mục</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sách bán chạy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Chương trình khuyến mãi</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<main class="my-4 d-flex flex-column align-items-center">
+    <h1 class="text-center">Sách</h1>
+    <div class="container">
+        <div class="filter"></div>
+        <div class="row">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode"
+                             src="https://mifunko.com/4010-large_default/figura-pop-marvel-spiderman-no-way-home-spiderman-integrated-suit.jpg"
+                             alt="Funko Pop! Spiderman Integrated Suit - Marvel: Spiderman No Way Home">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! Spiderman Integrated Suit - Marvel: Spiderman No Way
+                            Home</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode"
+                             src="https://cdn.shopify.com/s/files/1/0571/3779/1128/products/10_1200x.png"
+                             alt="Funko Pop! Marvel Averngers Thor">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! Marvel Averngers Thor</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode"
+                             src="https://mifunko.com/3249-large_default/funko-pop-dc-comics-arkham-asylum-batman.jpg"
+                             alt="Funko Pop! DC Comics Arkham Asylum Batman">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! DC Comics Arkham Asylum Batman</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode"
+                             src="https://mifunko.com/323-large_default/funko-pop-dragon-ball-z-goku.jpg"
+                             alt="Funko Pop! Goku 615 - Dragon Ball Z">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! Goku 615 - Dragon Ball Z</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode" src="https://m.media-amazon.com/images/I/51-gDwbKPKL._AC_UL320_.jpg"
+                             alt="Funko Pop! Games: Pokemon S8 - Dragonita">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! Games: Pokemon S8 - Dragonita</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode"
+                             src="https://mifunko.com/4010-large_default/figura-pop-marvel-spiderman-no-way-home-spiderman-integrated-suit.jpg"
+                             alt="Funko Pop! Spiderman Integrated Suit - Marvel: Spiderman No Way Home">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! Spiderman Integrated Suit - Marvel: Spiderman No Way
+                            Home</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode"
+                             src="https://cdn.shopify.com/s/files/1/0571/3779/1128/products/10_1200x.png"
+                             alt="Funko Pop! Marvel Averngers Thor">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! Marvel Averngers Thor</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode"
+                             src="https://mifunko.com/3249-large_default/funko-pop-dc-comics-arkham-asylum-batman.jpg"
+                             alt="Funko Pop! DC Comics Arkham Asylum Batman">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! DC Comics Arkham Asylum Batman</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode"
+                             src="https://mifunko.com/323-large_default/funko-pop-dragon-ball-z-goku.jpg"
+                             alt="Funko Pop! Goku 615 - Dragon Ball Z">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! Goku 615 - Dragon Ball Z</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+                <figure class="card card-product-grid h-100">
+                    <div class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+                        <img class="mix-blend-mode" src="https://m.media-amazon.com/images/I/51-gDwbKPKL._AC_UL320_.jpg"
+                             alt="Funko Pop! Games: Pokemon S8 - Dragonita">
+                    </div>
+                    <figcaption class="card-product-info">
+                        <a href="" class="title">Funko Pop! Games: Pokemon S8 - Dragonita</a>
+                        <div class="price-wrap">
+                            <span class="price">$19.16</span>
+                            <del class="discount-price">$23.95</del>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger w-100 mt-2">Agregar a carrito</button>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-center">
+  <div class="content">
+    <div class="container cont1"></div>
+    <div class="container cont2">
+      <div class="login" id="loginid">
+        <h1>ĐĂNG NHẬP</h1>
+        <form [formGroup]="signInForm" *ngIf="signInForm" (ngSubmit)="onSubmit()">
+          <input formControlName="username" class="col-12 mb-3 p-0" type="text" placeholder="Tên tài khoản" required><br>
+          <input formControlName="password" class="col-12 mb-3 p-0" type="password" placeholder="Mật khẩu" required><br>
+          <div class="enquire">
+            <a href="#"><input type="checkbox">Ghi nhớ tôi</a>
+            <a href="#">Quên mật khẩu?</a>
+          </div>
+          <button class="btn btn1" type="submit">ĐĂNG NHẬP</button>
+          <br>
+        </form>
+        <a href="#" class="ask">Chưa có tài khoản? Tạo mới ngay</a><br>
+        <button class="btn btn2" [routerLink]="['/sign-up']">ĐĂNG KÍ</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,46 @@
+<header>
+  <div class="top-header">
+    <div class="row">
+      <div class="function-nav d-flex flex-row justify-content-end ">
+        <a class="function-item" [hidden]="isLogin" routerLink="sign-up">Đăng kí</a>
+        <a class="function-item" [hidden]="isLogin" routerLink="sign-in">Đăng nhập</a>
+        <a class="function-item" [hidden]="!isLogin">Chào, {{username}} <span [routerLink]="['/sign-out']">, Thoát</span></a>
+        <a href="#"><i class='function-item bx bx-search-alt-2 bx-sm'></i></a>
+        <a routerLink="cart" href="#"><i class='function-item bx bx-cart bx-sm'></i></a>
+      </div>
+    </div>
+    <div id="logo">
+      <img class="py-2" src="../../../../assets/img/logo.png" width="200px" alt="logo">
+    </div>
+  </div>
+  <div class="bottom-header d-flex align-self-end justify-content-center">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" style="color: var(--secondary-color);" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Trang chủ</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Danh mục
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+              <li><a class="dropdown-item" href="#">Truyện ngắn</a></li>
+              <li><a class="dropdown-item" href="#">Truyện dài</a></li>
+              <li><a class="dropdown-item" href="#">Trinh thám</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sách bán chạy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Chương trình khuyến mãi</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

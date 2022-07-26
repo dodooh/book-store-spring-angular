@@ -1,0 +1,164 @@
+<div class="wrapper" id="product-detail-view">
+  <div class="product-info">
+    <div class="container" style="max-width: 1320px">
+      <div class="row" style="height:  562px;">
+        <div class="product-info-left">
+          <div id="customCarousel" class="carousel slide" data-ride="carousel" align="center">
+            <!-- slides -->
+            <div class="carousel-wrap">
+              <div class="carousel-inner">
+                <div class="carousel-item active d-flex justify-content-center" data-interval="5000">
+                  <img *ngIf="book" [src]="book.img"
+                       alt="medicine-image">
+                </div>
+              </div>
+              <div class="carousel-genuine-product">
+                Sản phẩm 100% chính hãng, mẫu mã có thể thay đổi theo lô hàng
+              </div>
+            </div>
+            <!-- Thumbnails -->
+            <ol class="carousel-indicators list-inline">
+              <li class="list-inline-item active">
+                <a id="carousel-selector-0" class="selected" data-slide-to="0"
+                   data-target="#customCarousel">
+                  <img *ngIf="book" [src]="book.img"
+                       class="img-fluid">
+                </a>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="product-info-right">
+          <div class="d-flex flex-column h-75" style="flex: 1">
+            <div class="product-content-header" *ngIf="book">
+              <p>{{book.name}}</p>
+            </div>
+            <div class="product-content-body">
+              <div class="d-flex justify-content-end">
+                <p class="product-sku-info" *ngIf="book">Mã sku: {{book.bookId}}</p>
+              </div>
+            </div>
+            <div class="product-price-group py-3">
+              <div class="d-flex align-items-center">
+                <p class="product-price" *ngIf="book">
+                  {{book.price * quantity | currency: 'VND' : '' }}
+                  VND
+                </p>
+                <p class="mr-3" style="text-decoration: line-through;" *ngIf="book">
+                  {{(book.price * 10 / 8) * quantity | currency: 'VND': ''}}
+                  VND
+                </p>
+                <div class="badge badge-info">-20%</div>
+              </div>
+              <div class="product-extra">
+                <span class="text-success">Freeship </span>
+                <span>Cho đơn hàng từ</span>
+                <span class="text-success"> 300,000 VND</span>
+              </div>
+            </div>
+            <div class="product-description py-3">
+              <p *ngIf="book" class="text-lowercase text-small">
+                *Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình
+                thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng
+                kềnh, thuế nhập khẩu (đối với đơn hàng giao từ nước ngoài có giá trị trên 1 triệu đồng).....
+              </p>
+            </div>
+            <div class="mt-auto" *ngIf="book && book.quantity > 0, else outOfStockButton">
+              <div class="d-flex px-2">
+                <p>Còn {{book.quantity}} sản phẩm</p>
+              </div>
+              <div class="d-flex align-items-center justify-content-between product-quantity-group px-2">
+                <button class="py-2" (click)="decreaseQuantity()">-</button>
+                <input readonly [value]="quantity" class="bg-success">
+                <button class="py-2" (click)="increaseQuantity()">+</button>
+              </div>
+              <div class="product-buy-group d-flex justify-content-between mt-3">
+                <button class="btn btn-outline-success" (click)="buyNow()">Mua Ngay</button>
+                <button class="btn btn-success" style="width: 60%" (click)="addItemToCart()">
+                  <i class="fa-solid fa-cart-arrow-down"></i>&nbsp;
+                  Thêm vào giỏ hàng
+                </button>
+              </div>
+            </div>
+            <ng-template #outOfStockButton>
+              <div class="product-buy-group d-flex justify-content-start mt-3">
+                <button class="btn btn-warning" style="width: 60%" disabled>
+                  Sản phẩm hiện đã hết hàng
+                </button>
+              </div>
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="product-detail">
+    <div class="container " style="max-width: 1320px">
+      <div class="row">
+        <div class="product-detail-left">
+          <div class="product-detail-header text-success">Thông tin chi tiết</div>
+          <div class="product-detail-description mt-3">
+            <p *ngIf="book">
+              <strong>Nhà Xuất Bản</strong>
+              Nhà xuất bản {{book.publisher.name}}
+            </p>
+            <p *ngIf="book">
+              <strong>Danh mục</strong>
+              {{book.category.name}}
+            </p>
+            <p *ngIf="book.author">
+              <strong>Tác giả</strong>
+              {{book.author.name}}
+            </p>
+            <p *ngIf="book.dimension">
+              <strong>Kích thước bìa</strong>
+              {{book.dimension}}
+            </p>
+            <p *ngIf="book.publisherDate">
+              <strong>Ngày xuất bản</strong>
+              {{book.publisherDate}}
+            </p>
+            <p *ngIf="book">
+              <strong>Mô tả</strong>
+              <br>
+              <span class="p-describe">{{book.description}}</span>
+            </p>
+
+          </div>
+        </div>
+        <div class="product-detail-right">
+          <div class="product-detail-header text-success">Sản phẩm liên quan</div>
+          <div class="product-relative mt-3" *ngIf="relativeList">
+            <!--            Card-->
+            <div class="cards-wrapper">
+
+              <div class="card" [routerLink]="['/book', bookRelative.bookId]"
+                   *ngFor="let bookRelative of relativeList">
+                <img alt="Card image cap"
+                     class=""
+                     [src]="bookRelative.img">
+                <div class="card-body">
+                  <div class="card-title">
+                    <p>{{bookRelative.name}}</p>
+                  </div>
+                  <div>
+                    <p class="card-price">
+                      <strong>{{bookRelative.price  | currency: 'VND': '' }}
+                        VND</strong>
+                    </p>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <a (click)="scrollToTopOfScrollable()" class="btn btn-success w-100 p-2"
+                       [routerLink]="['/book', bookRelative.bookId]">Xem chi tiết</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

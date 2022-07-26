@@ -1,0 +1,42 @@
+<div class="container d-flex justify-content-center">
+  <div class="content">
+    <div class="container cont1"></div>
+    <div class="container cont2">
+      <div class="signup" id="signupid">
+        <h1>ĐĂNG KÍ</h1>
+        <div class="row p-0" style="width: 350px">
+          <form [formGroup]="signUpForm" *ngIf="signUpForm" (ngSubmit)="onSubmit()">
+
+            <input formControlName="name" class="col-12 mb-3 p-0" type="text" placeholder="Họ Và tên" required><br>
+            <input formControlName="username" class="col-12 mb-3 p-0" type="text" placeholder="Tên tài khoản"
+                   required><br>
+            <input formControlName="password" class="col-12 mb-3 p-0" type="password" placeholder="Mật khẩu"
+                   required><br>
+            <input formControlName="confirmPassword" class="col-12 mb-3 p-0" type="password"
+                   placeholder="Xác nhận mật khẩu" required><br>
+            <div class="col-12 mb-3 d-flex justify-content-between p-0">
+              <label for="date-of-birth">Ngày sinh</label>
+              <input formControlName="dateOfBirth" type="date" id="date-of-birth" required>
+            </div>
+            <div class="col-12 mb-3 d-flex justify-content-between p-0">
+              <label>Giới tính</label>
+              <div>
+                <label for="male-radio">Nam</label>
+                <input formControlName="gender" type="radio" class="mx-2" value="true" id="male-radio" required>
+                <label for="female-radio">Nữ</label>
+                <input formControlName="gender" type="radio" class="mx-2" value="false" id="female-radio" required>
+              </div>
+            </div>
+
+            <a href="#"><input type="checkbox"> Tôi đồng ý với những Chính sách và Điều khoản</a><br>
+            <button class="btn btn3" type="submit">ĐĂNG KÍ</button>
+            <br>
+          </form>
+        </div>
+        <a href="#" class="ask">Đã có tài khoản? Đăng nhập</a><br>
+        <button class="btn btn2" [routerLink]="['/sign-in']">ĐĂNG NHẬP</button>
+      </div>
+    </div>
+  </div>
+
+</div>

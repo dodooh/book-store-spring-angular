@@ -1,0 +1,100 @@
+<main class="my-2 d-flex flex-column align-items-center">
+  <div class="container my-3">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <h1>Sách tổng hợp</h1>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="form-floating">
+          <input (keyup.enter)="doSearch($event.target.value)" class="form-control" type="search" placeholder="Search"
+                 aria-label="Search" id="floatingSearch"/>
+          <label for="floatingSearch">Tìm kiếm</label>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-sm-12">
+        <div class="form-floating">
+          <select class="form-select" id="floatingSort" (change)="doSort($event.target.value)"
+                  aria-label="Floating label select example">
+            <option value="name,asc" selected>Tên A->Z</option>
+            <option value="name,desc">Tên Z->A</option>
+            <option value="price,asc">Giá tăng dần</option>
+            <option value="price,desc">Giá giảm dần</option>
+          </select>
+          <label for="floatingSort">Sắp xếp theo &nbsp;</label>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-sm-12">
+        <div class="form-floating">
+          <select class="form-select" id="floatingSize" (change)="changeSize()" [(ngModel)]="size"
+                  aria-label="Floating label select example">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select>
+          <label for="floatingSize">Hiển thị &nbsp;</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="filter"></div>
+    <div class="row" *ngIf="bookList, else NotFound">
+      <div *ngFor="let b of bookList" class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-five mb-4">
+        <figure class="card card-product-grid h-100">
+          <div [routerLink]="['/book', b.bookId]" class="img-wrap rounded bg-gray-light">
+                        <span class="topbar">
+                            <span class="badge tag-discount">-20%</span>
+                        </span>
+            <img class="mix-blend-mode"
+                 [src]=b.img
+                 [alt]=b.name>
+          </div>
+          <figcaption class="card-product-info">
+            <a [routerLink]="['/book', b.bookId]" class="title">{{b.name}}</a>
+            <div class="price-wrap">
+              <span class="price">{{b.price * dictMap[b.bookId] | currency: 'VND': '' }} VND</span>
+              <del class="discount-price">{{b.price * 10 / 8 * dictMap[b.bookId] | currency: 'VND': '' }} VND</del>
+            </div>
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="d-flex align-items-center justify-content-between product-quantity-group px-2">
+                <button class="py-2" (click)="decreaseQuantity(b.bookId)">-</button>
+                <input readonly [value]="dictMap[b.bookId]" class="bg-success">
+                <button class="py-2" (click)="increaseQuantity(b.bookId)">+</button>
+              </div>
+              <button (click)="addToCart(b.bookId)" class="btn btn-sm btn-outline-danger">Thêm</button>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="container">
+        <nav class="d-flex justify-content-center">
+          <ul class="pagination">
+            <li class="page-item">
+              <a (click)="previousPage()" [class.disabled]="pageNumber <= 0" class="page-link">Trước</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link">
+                <span>{{pageNumber + 1}}</span>
+                <span>/</span>
+                <span>{{totalPages}}</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" (click)="nextPage()" [class.disabled]="pageNumber + 1 >= totalPages">Sau</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+    <ng-template #NotFound>
+      <div class="container">
+        <nav class="d-flex justify-content-center">
+          Không tìm thấy sản phẩm nào phù hợp.
+        </nav>
+      </div>
+    </ng-template>
+  </div>
+</main>
+
+

@@ -1,0 +1,123 @@
+.content {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+}
+.cont1 {
+  border-radius: 10px;
+  width: 520px;
+  height: 600px;
+  background-image: url("https://cdn.pixabay.com/photo/2022/06/29/10/38/job-7291427_960_720.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.cont2 {
+  width: 520px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#loginid, .signup {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#signupid {
+  display: none;
+}
+.login h1, .signup h1 {
+  padding: 10px 0;
+  font-size: 30px;
+  width: 350px;
+  color: var(--secondary-color);
+}
+input[type="text"], input[type="password"], input[type="email"] {
+  width: 350px;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--secondary-color);
+  font-size: 13px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.enquire {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn {
+  width: 350px;
+  height: 35px;
+  cursor: pointer;
+}
+.btn1, .btn2, .btn3 {
+  margin: 15px 0 0 0;
+  color: white;
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  font-size: 15px;
+  font-weight: 700;
+}
+.or {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.or h1 {
+  font-size: 20px;
+  padding: 0;
+  color: black;
+}
+.media {
+  margin-top: 15px;
+  width: 350px;
+  height: 35px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: white;
+  font-weight: 700;
+}
+.media1 {
+  background-color: #4267B2;
+}
+.media2 {
+  background-color: #DB4437;
+}
+.media3 {
+  background-color: black;
+}
+.btn2 {
+  margin: 0;
+}
+.ask {
+  margin-top: 10px;
+  width: 350px;
+}
+.btn3 {
+  margin-top: 0;
+}
+@media only screen and (max-width: 900px) {
+  .content {
+    flex-direction: column;
+  }
+  .container {
+    width: 350px;
+  }
+  .cont1 {
+    height: 300px;
+  }
+}
