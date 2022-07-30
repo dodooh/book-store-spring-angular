@@ -75,7 +75,7 @@ export class TokenStorageService {
       '=' +
       (params.value ? params.value : '') +
       ';' +
-      (params.session && params.session == true
+      (params.session && params.session === true
         ? ''
         : 'expires=' + d.toUTCString() + ';') +
       'path=' +

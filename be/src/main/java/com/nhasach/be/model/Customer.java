@@ -28,6 +28,9 @@ public class Customer {
     private String customerId;
     private String name;
     private String dateOfBirth;
+    private String phone;
+    private String email;
+    private String address;
     private Boolean gender;
     @OneToOne
     @JoinColumn(name = "customer_username", referencedColumnName = "username")

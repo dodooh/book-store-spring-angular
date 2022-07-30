@@ -8,6 +8,8 @@ import {HomePageComponent} from './component/common/home-page/home-page.componen
 import {BookDetailComponent} from './component/book/book-detail/book-detail.component';
 import {CartService} from './component/cart/cart.service';
 import {CartDetailComponent} from './component/cart/cart-detail/cart-detail.component';
+import {PaymentDetailComponent} from './component/cart/payment-detail/payment-detail.component';
+import {AuthGuard} from './component/account/auth.guard';
 
 
 const routes: Routes = [
@@ -17,13 +19,19 @@ const routes: Routes = [
   {path: 'forbidden', component: ForbiddenComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'cart', component: CartDetailComponent},
+  {path: 'payment', component: PaymentDetailComponent, canActivate:[AuthGuard],data:{
+      roles: ["ROLE_USER"]
+    }},
   {path: 'book/:bookID', component: BookDetailComponent},
+  // {path: '**', component: ForbiddenComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'}
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

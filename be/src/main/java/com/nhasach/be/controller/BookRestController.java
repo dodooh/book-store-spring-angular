@@ -2,19 +2,13 @@ package com.nhasach.be.controller;
 
 import com.nhasach.be.model.Book;
 import com.nhasach.be.service.IBookService;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,7 +27,8 @@ public class BookRestController {
     private IBookService bookService;
 
     @GetMapping("")
-    public ResponseEntity<?> getList(@RequestParam Optional<Integer> page, @RequestParam Optional<Integer> size, @RequestParam Optional<String> sort,
+    public ResponseEntity<?> getList(@RequestParam Optional<Integer> page, @RequestParam Optional<Integer> size,
+        @RequestParam Optional<String> sort,
         @RequestParam Optional<String> dir, @RequestParam Optional<String> keyword)
     {
         Direction direction = Direction.ASC;

@@ -42,6 +42,9 @@ public class UserService implements IUserService {
         customer.setName(signUpDto.getName());
         customer.setDateOfBirth(signUpDto.getDateOfBirth());
         customer.setGender(signUpDto.getGender());
+        customer.setAddress(signUpDto.getAddress());
+        customer.setPhone(signUpDto.getPhone());
+        customer.setEmail(signUpDto.getEmail());
         this.customerRepository.save(customer);
         Roles roles = this.roleRepository.findRolesByRoleName("ROLE_USER");
         UserRole userRole = new UserRole(users,roles);

@@ -18,6 +18,12 @@
               <label for="date-of-birth">Ngày sinh</label>
               <input formControlName="dateOfBirth" type="date" id="date-of-birth" required>
             </div>
+            <input formControlName="phone" class="col-12 mb-3 p-0" type="text" placeholder="Số điện thoại"
+                   required><br>
+            <input formControlName="email" class="col-12 mb-3 p-0" type="email" placeholder="Email"
+                   required><br>
+            <input formControlName="address" class="col-12 mb-3 p-0" type="text" placeholder="Địa chỉ"
+                   required><br>
             <div class="col-12 mb-3 d-flex justify-content-between p-0">
               <label>Giới tính</label>
               <div>
@@ -27,13 +33,10 @@
                 <input formControlName="gender" type="radio" class="mx-2" value="false" id="female-radio" required>
               </div>
             </div>
-
-            <a href="#"><input type="checkbox"> Tôi đồng ý với những Chính sách và Điều khoản</a><br>
             <button class="btn btn3" type="submit">ĐĂNG KÍ</button>
-            <br>
           </form>
         </div>
-        <a href="#" class="ask">Đã có tài khoản? Đăng nhập</a><br>
+        <a href="#" class="ask">Đã có tài khoản? Đăng nhập</a>
         <button class="btn btn2" [routerLink]="['/sign-in']">ĐĂNG NHẬP</button>
       </div>
     </div>

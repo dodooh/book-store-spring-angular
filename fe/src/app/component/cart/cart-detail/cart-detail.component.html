@@ -80,7 +80,7 @@
                       <button class="btn btn-light" (click)="increaseItem(cartDetail.book)">+</button>
                     </div>
                   </td>
-                  <td class="col-2 align-right fw-bold">
+                  <td class="col-2 align-right fw-bold fs-4">
                     {{cartDetail.book.price * cartDetail.quantity | currency:'VND' : ''}} VND
                   </td>
                 </tr>
@@ -93,25 +93,15 @@
                   Tiếp tục mua hàng
                 </button>
               </div>
-              <div class="col-sm-10 col-md-4 col-lg-3 pb-1">
-                <button style="min-height: 45px" class="btn btn-warning btn-block" (click)="refreshCart()">
-                  Cập nhật giỏ hàng
-                </button>
-              </div>
             </div>
           </div>
         </div>
         <div class="col-xl-4 col-lg-12 my-2">
           <div class="bg-white p-3 rounded-lg">
             <div class="d-flex justify-content-between border-bottom pb-8">
-              <h4 class="font-weight-bold">Tổng tiền</h4>
             </div>
             <div class="table-responsive">
-              <table class="table table-borderless fs-5">
-                <tr>
-                  <td class="col-5">Tạm tính</td>
-                  <td class="col-7 align-right fw-bold">{{total|currency:'VND' : ''}} VND</td>
-                </tr>
+              <table class="table table-borderless">
                 <tr class="border-bottom fw-bold fs-4">
                   <td class="col-5">Tổng tiền</td>
                   <td class="col-7 align-right ">{{total|currency:'VND' : ''}} VND</td>
@@ -150,31 +140,6 @@
                 (click)="removeItem(bookToDelete)"
                 data-bs-dismiss="modal">Xóa
         </button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
-<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#errorModal">Open Modal</button>
-<div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Tạm hết hàng</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p *ngFor="let bookError of bookErrorArray">
-          <span class="text-danger font-weight-bold">{{bookError}}</span>
-        </p>
-        <p>Vui lòng điều chỉnh lại danh sách!</p>
-      </div>
-      <div class="modal-footer">
-        <div class="mx-auto row">
-          <button class="mx-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
-        </div>
       </div>
     </div>
   </div>

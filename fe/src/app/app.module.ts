@@ -15,11 +15,13 @@ import {SignOutComponent} from './component/account/sign-out/sign-out.component'
 import {BookListComponent} from './component/book/book-list/book-list.component';
 import {HomePageComponent} from './component/common/home-page/home-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgxPaginationModule} from 'ngx-pagination';
 import {FooterComponent} from './component/common/footer/footer.component';
 import {BookDetailComponent} from './component/book/book-detail/book-detail.component';
-import { CartDetailComponent } from './component/cart/cart-detail/cart-detail.component';
-import { PaymentDetailComponent } from './component/cart/payment-detail/payment-detail.component';
+import {CartDetailComponent} from './component/cart/cart-detail/cart-detail.component';
+import {PaymentDetailComponent} from './component/cart/payment-detail/payment-detail.component';
+import {authInterceptorProviders} from './component/account/auth.interceptor';
+import {NgxPayPalModule} from 'ngx-paypal';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -42,16 +44,17 @@ import { PaymentDetailComponent } from './component/cart/payment-detail/payment-
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxPaginationModule,
+    NgxPayPalModule,
     ToastrModule.forRoot({
       timeOut     : 3000,
       progressBar : true,
       tapToDismiss: true
     }),
     NgbModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
   ],
-  providers   : [],
+  providers   : [authInterceptorProviders],
   bootstrap   : [AppComponent]
 })
 export class AppModule {

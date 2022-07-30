@@ -6,7 +6,7 @@ import {CartDto} from '../../model/cart-dto.model';
   providedIn: 'root'
 })
 export class CartService {
-
+  rate = 23500;
   constructor() {
   }
 
@@ -35,6 +35,17 @@ export class CartService {
     return cartList;
   }
 
+  getQuantity(): any {
+    let cartList: CartDto[] = [];
+    if (localStorage.getItem('cart')) {
+      return JSON.parse(localStorage.getItem('cart')).length;
+    }
+    return 0;
+  }
+  changeRate(amount: number) {
+    return (amount / this.rate).toFixed(2) + '';
+  }
+
   removeItem(book: Book) {
     let cartList: CartDto[] = [];
     if (localStorage.getItem('cart')) {
@@ -42,5 +53,9 @@ export class CartService {
       cartList = cartList.filter(i => i.book.bookId !== book.bookId);
       localStorage.setItem('cart', JSON.stringify(cartList));
     }
+  }
+
+  clearCart() {
+    localStorage.setItem('cart', JSON.stringify({}));
   }
 }

@@ -33,7 +33,6 @@ export class SignInComponent implements OnInit {
     if (this.signInForm.valid) {
       this.accountService.signIn(this.signInForm.value).subscribe(
         next => {
-          console.log(next);
           this.tokenStorageService.saveTokenSession(next.token);
           this.tokenStorageService.saveUserSession(next);
           this.userName = this.tokenStorageService.getUser().username;
@@ -46,7 +45,6 @@ export class SignInComponent implements OnInit {
             });
           }, 3000);
         }, error => {
-          console.log(error);
           this.toast.error(`Sai mật khẩu hoặc tên đăng nhập`);
         }, () => {
 

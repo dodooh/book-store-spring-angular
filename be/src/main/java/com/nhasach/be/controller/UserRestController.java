@@ -24,6 +24,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -91,4 +92,9 @@ public class UserRestController {
             jwt, logInDto.getUsername(), logInDto.getPassword(), role)
         );
     }
+//
+//    @PostMapping("{username}")
+//    public ResponseEntity<?> getUserInfo(@PathVariable("username") String username) {
+//
+//    }
 }

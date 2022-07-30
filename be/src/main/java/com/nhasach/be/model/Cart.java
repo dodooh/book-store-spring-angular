@@ -31,6 +31,9 @@ public class Cart {
     @JoinColumn(name = "customer_id", referencedColumnName = "customerId")
     private Customer customer;
     private String dateCreate;
+    private String nameReceive;
+    private String phoneReceive;
+    private String addressReceive;
     @OneToMany(mappedBy = "cart")
     private List<CartDetail> cartDetailList;
 

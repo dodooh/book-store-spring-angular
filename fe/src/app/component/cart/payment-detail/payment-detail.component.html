@@ -1,1 +1,156 @@
-<p>payment-detail works!</p>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-spin-clockwise" [fullScreen]="true"><p
+  style="color: white"> Vui lòng đợi ...</p></ngx-spinner>
+<div class="wrapper mb-2">
+  <div class="container-fluid mx-auto">
+    <div class="flex">
+      <div *ngIf="cartDetails == null || cartDetails.length < 1" class="row">
+        <div class="col-8 mx-auto mt-2">
+          <div class="bg-white p-3 rounded-lg">
+            <div class="d-flex justify-content-between border-bottom pb-8">
+              <h4 class="font-weight-bold">Giỏ hàng</h4>
+            </div>
+            <br>
+            <br>
+            <div class="col-4 mx-auto m-3 text-center">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/102/102661.png"
+                width="30%"
+                alt="empty cart">
+            </div>
+            <h5 class="text-center">Giỏ hàng của bạn đang trống</h5>
+            <div class="form-group row mt-4">
+              <div class="col-sm-3 mx-auto pb-1">
+                <button [routerLink]="['/home']" style="min-height: 45px"
+                        class="btn btn-outline-success btn-block">
+                  Tiếp tục mua hàng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="cartDetails != null && cartDetails.length >= 1" class="row">
+        <div class="col-xl-8 col-lg-12 my-2">
+          <div class="bg-white p-3 rounded-lg">
+            <div class="d-flex justify-content-between border-bottom pb-8">
+              <h4 class="font-weight-bold">Giỏ hàng</h4>
+              <h5 class="font-weight-bold">{{cartDetails.length}} Sản phẩm</h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-borderless table-hover">
+                <tr class="border-bottom">
+                  <td class="col-8">SẢN PHẨM</td>
+                  <td class="col-1">GIÁ</td>
+                  <td class="col-1">SỐ LƯỢNG</td>
+                  <td class="col-2 align-right">TỔNG TIỀN</td>
+                </tr>
+                <tr *ngFor="let cartDetail of cartDetails" class="border-bottom">
+                  <td class="col-8">
+                    <div class="d-flex px-2 align-items-center justify-content-start">
+                      <div style="width: 60px; height: 75px">
+                        <img class="h-100"
+                             [src]=cartDetail.book.img
+                             alt="">
+                      </div>
+                      <div class="px-3 text-success">
+                        <a class="text-decoration-none" [routerLink]="['/book', cartDetail.book.bookId]">{{cartDetail.book.name}}</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="col-1 per-price">
+                    {{cartDetail.book.price | currency:'VND' : ''}}
+                  </td>
+                  <td class="col-1 align-right">
+                    <div class="px-2 d-flex align-items-center justify-content-between product-quantity-group">
+                      {{cartDetail.quantity}}
+                    </div>
+                  </td>
+                  <td class="col-2 align-right fw-bold">
+                    {{cartDetail.book.price * cartDetail.quantity | currency:'VND' : ''}} VND
+                  </td>
+                </tr>
+                <tr class="border-bottom   fw-bold fs-4">
+                  <td class="col-8">
+                    Tổng tiền
+                  </td>
+                  <td class="col-1 per-price">
+                  </td>
+                  <td class="col-1 align-right">
+
+                  </td>
+                  <td class="col-2 align-right fw-bold">
+                    {{total | currency:'VND' : ''}} VND
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10 col-md-4 col-lg-3 pb-1">
+                <button [routerLink]="['/cart']" style="min-height: 45px"
+                        class="btn btn-outline-success">
+                  Quay lại giỏ hàng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-12 my-2">
+          <div class="bg-white p-3 rounded-lg">
+            <div class="d-flex justify-content-between border-bottom pb-8">
+              <h4 class="font-weight-bold">Thông tin giao hàng</h4>
+            </div>
+              <form class="mb-3" [formGroup]="customerForm" *ngIf="customerForm">
+                <div class="row pt-2">
+                  <div class="col-4 py-1 d-flex align-items-center">
+                    <label for="inputName">Tên người nhận</label>
+                  </div>
+                  <div class="col-8 py-1 d-flex align-items-center">
+                    <input id="inputName" formControlName="name" class="form-control" type="text" required><br>
+                  </div>
+                  <div class="col-4 py-1 d-flex align-items-center">
+                    <label for="inputPhone">Số điện thoại</label>
+                  </div>
+                  <div class="col-8 py-1 d-flex align-items-center">
+                    <input id="inputPhone" formControlName="phone" class="form-control" type="text" required><br>
+                  </div>
+                  <div class="col-4 py-1 d-flex align-items-center">
+                    <label for="inputAddress">Địa chỉ</label>
+                  </div>
+                  <div class="col-8 py-1 d-flex align-items-center">
+                    <input id="inputAddress" formControlName="address" class="form-control" type="text" required><br>
+                  </div>
+                </div>
+              </form>
+            <ngx-paypal [config]="paypalConfig"></ngx-paypal>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#errorModal">Open Modal</button>
+<div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tạm hết hàng</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p *ngFor="let bookError of bookErrorArray">
+          <span class="text-danger font-weight-bold">{{bookError}}</span>
+        </p>
+        <p>Vui lòng điều chỉnh lại danh sách!</p>
+      </div>
+      <div class="modal-footer">
+        <div class="mx-auto row">
+          <button class="mx-2 btn btn-secondary" data-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
